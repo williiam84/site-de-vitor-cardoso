@@ -176,24 +176,34 @@ function EnviarMensagem() {
     // Abre o WhatsApp em nova aba
     window.open(link, "_blank");
 }
-let index = 0;
-const slides = document.querySelectorAll(".carrossel .slide");
-const total = slides.length;
+document.addEventListener("DOMContentLoaded", () => {
+    let i = 0;
+    const slides = document.querySelectorAll(".carrossel .slide");
+    const dots = document.querySelectorAll(".carrossel .dot");
 
-function mostrarSlide() {
-    slides.forEach((slide, i) => {
-        slide.classList.remove("ativo");
+    function mostrarSlide(n) {
+        slides.forEach(s => s.classList.remove("ativo"));
+        dots.forEach(d => d.classList.remove("ativo"));
+
+        i = (n + slides.length) % slides.length;
+
+        slides[i].classList.add("ativo");
+        dots[i].classList.add("ativo");
+    }
+
+    // autoplay
+    setInterval(() => {
+        mostrarSlide(i + 1);
+    }, 2500);  // 2,5s por slide
+
+    // clicar nos dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => mostrarSlide(index));
     });
-    slides[index].classList.add("ativo");
-    index = (index + 1) % total;
-}
 
-// Mostra o primeiro slide imediatamente
-mostrarSlide();
-
-// Troca a cada 2,5 segundos para ficar mais lento
-setInterval(mostrarSlide, 2000);
-
+    // mostra primeiro slide ao carregar
+    mostrarSlide(i);
+});
 </script>
 </body>
 </html>
