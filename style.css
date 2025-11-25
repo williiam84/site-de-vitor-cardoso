@@ -412,7 +412,6 @@ main button:hover {
     align-items: center;
 }
 .carrossel {
-    border-radius: 10px;
   position: relative;
   width: 100%;
   max-width: 1000px;
@@ -437,6 +436,7 @@ main button:hover {
   object-fit: contain;
   opacity: 0;
   transition: opacity 1.5s ease-in-out;
+  border-radius: 5px;
 }
 
 .carrossel img.ativo {
