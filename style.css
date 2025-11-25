@@ -412,6 +412,7 @@ main button:hover {
     align-items: center;
 }
 .carrossel {
+    border-radius: 10px;
   position: relative;
   width: 100%;
   max-width: 1000px;
