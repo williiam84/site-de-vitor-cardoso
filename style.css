@@ -333,19 +333,15 @@ main button:hover {
     color: #fff;
     margin-top: 30px;
 }
-
-/* ============================
-   CARROSSEL
-============================ */
 .carrossel {
   position: relative;
   width: 100%;
-  max-width: 500px;
-  height: 500px;
-  margin: 20px auto;
+  max-width: 1000px;
+  height: 700px;           /* altura maior para não cortar */
+  margin: 0 auto;
   overflow: hidden;
-  border-radius: 50%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border-radius: 5px;      
+  background-color: #111;   
 }
 
 .carrossel .slides {
@@ -355,22 +351,25 @@ main button:hover {
 }
 
 .carrossel img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
+  object-fit: contain;     /* mantém proporção sem cortar */
+  border-radius: 5px;
   opacity: 0;
-  transition: opacity 1.5s ease-in-out, transform 0.5s ease;
+  transition: opacity 1s ease-in-out;
 }
 
 .carrossel img.ativo {
   opacity: 1;
   z-index: 1;
-  transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .carrossel {
+    height: 500px;          /* altura menor em celular */
+  }
 }
 
 /* Pontos do carrossel */
@@ -397,39 +396,19 @@ main button:hover {
   transform: scale(1.3);
 }
 
-/* ============================
-   RESPONSIVO
-============================ */
+/* RESPONSIVO */
 @media (max-width: 768px) {
-    .sobre-mim p {
-        font-size: 15px;
-    }
-
-    .sobre-mim .img img {
-        width: 140px;
-        height: 140px;
-    }
-
-    .carrossel {
-        max-width: 350px;
-        height: 350px;
-    }
+  .carrossel {
+    width: 300px;
+    height: 300px;
+  }
 }
 
 @media (max-width: 480px) {
-    .sobre-mim p {
-        font-size: 14px;
-    }
-
-    .sobre-mim .img img {
-        width: 120px;
-        height: 120px;
-    }
-
-    .carrossel {
-        max-width: 250px;
-        height: 250px;
-    }
+  .carrossel {
+    width: 220px;
+    height: 220px;
+  }
 }
 .contato {
     display: flex;
