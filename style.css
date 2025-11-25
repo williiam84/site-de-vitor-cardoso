@@ -460,3 +460,16 @@ main button:hover {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+@media (max-width: 768px) {
+    header { padding: 12px 15px; }
+    main { padding: 40px 15px; }
+    .sobre-mim p, .especialidades div p { font-size: 15px; }
+    .carrossel { height: 350px; }
+}
+
+@media (max-width: 480px) {
+    main { padding: 30px 10px; }
+    .sobre-mim p, .especialidades div p { font-size: 14px; }
+    .carrossel { height: 250px; }
+    .btn-contato, .especialidades button { width: 180px; height: 40px; font-size: 14px; line-height: 40px; }
+}
