@@ -277,26 +277,159 @@ main button:hover {
     line-height: 40px;
   }
 }
-
-/* ============================
-   BOTÃO FINAL
-============================ */
-.sobre-mim button {
-    width: 260px;
-    margin: 20px auto 0;
-    padding: 12px;
-    border-radius: 10px;
-    background: #c8b47b;
-    color: #1a1a1a;
-    font-size: 15px;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
+.sobre-mim {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+    gap: 30px;
+    width: 100%;
+    background: linear-gradient(180deg, #111 0%, #1a1a1a 100%);
 }
 
-.sobre-mim button:hover {
-    opacity: 0.8;
+/* Imagem de perfil circular */
+.sobre-mim .img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.sobre-mim .img img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #c6b26b; /* borda dourada */
+    box-shadow: 0 8px 20px rgba(198, 178, 107, 0.6); /* sombra chamativa */
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.sobre-mim .img img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 25px rgba(198, 178, 107, 0.8);
+}
+
+.sobre-mim .img h3 {
+    font-size: 24px;
+    color: #fff;
+    letter-spacing: 1px;
+}
+
+/* Texto de apresentação */
+.sobre-mim p {
+    max-width: 800px;
+    font-size: 16px;
+    color: #dcdcdc;
+    line-height: 1.8;
+    padding: 0 15px;
+}
+
+/* Título das imagens */
+.sobre-mim h2 {
+    font-size: 22px;
+    font-weight: 600;
+    color: #fff;
+    margin-top: 30px;
+}
+
+/* ============================
+   CARROSSEL
+============================ */
+.carrossel {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 50%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.carrossel .slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carrossel img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out, transform 0.5s ease;
+}
+
+.carrossel img.ativo {
+  opacity: 1;
+  z-index: 1;
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+/* Pontos do carrossel */
+.dots {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.dots .dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  background-color: rgba(255,255,255,0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dots .dot.ativo {
+  background-color: #c6b26b;
+  transform: scale(1.3);
+}
+
+/* ============================
+   RESPONSIVO
+============================ */
+@media (max-width: 768px) {
+    .sobre-mim p {
+        font-size: 15px;
+    }
+
+    .sobre-mim .img img {
+        width: 140px;
+        height: 140px;
+    }
+
+    .carrossel {
+        max-width: 350px;
+        height: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sobre-mim p {
+        font-size: 14px;
+    }
+
+    .sobre-mim .img img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .carrossel {
+        max-width: 250px;
+        height: 250px;
+    }
 }
 .contato {
     display: flex;
@@ -410,43 +543,6 @@ main button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.carrossel {
-  position: relative;
-  width: 100%;
-  max-width: 1000px;
-  height: 500px; /* define altura fixa ou mínima */
-  margin: 0 auto;
-  overflow: hidden;
-}
-
-.carrossel .slides {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.carrossel img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  opacity: 0;
-  transition: opacity 1.5s ease-in-out;
-  border-radius: 5px;
-}
-
-.carrossel img.ativo {
-  opacity: 1;
-  z-index: 1;
-}
-#sobremim .img {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
 }
 /* Responsivo */
 @media (max-width: 600px) {
