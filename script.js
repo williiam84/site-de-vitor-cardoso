@@ -51,29 +51,37 @@ function VerPortifolio(){
     }, 1000)
     
 }
-// Quando a página termina de carregar
-window.addEventListener("load", function() {
-    const loading = document.getElementById("loading");
-    const conteudo = document.getElementById("conteudo");
+document.addEventListener("DOMContentLoaded", () => {
+    let i = 0;
+    const slides = document.querySelectorAll(".carrossel .slide");
+    const dots = document.querySelectorAll(".carrossel .dot");
 
-    // Oculta o loading após 2,5 segundos
-    setTimeout(() => {
-        if (loading && conteudo) {
-            conteudo.style.display = "block";
-            loading.style.display = "none";
-        }
-    }, 2500); // 2500ms = 2,5 segundos
+    function mostrarSlide(n) {
+        slides.forEach(s => {
+            s.classList.remove("ativo");
+            s.style.opacity = 0;
+            s.style.display = "none";
+        });
+        dots.forEach(d => d.classList.remove("ativo"));
+
+        i = (n + slides.length) % slides.length;
+
+        slides[i].style.display = "block";
+        setTimeout(() => slides[i].style.opacity = 1, 50);
+        dots[i].classList.add("ativo");
+    }
+
+    // autoplay
+    setInterval(() => {
+        mostrarSlide(i + 1);
+    }, 2000);  // troca a cada 2s
+
+    // clicar nos dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => mostrarSlide(index));
+    });
+
+    // mostra o primeiro slide
+    mostrarSlide(i);
 });
-
-// Função para ver o portfólio
-function VerPortifolio(){
-    const sobremim = document.getElementById("sobremim");
-    const inicio = document.getElementById("inicio");
-
-    setTimeout(() => {
-        if (sobremim && inicio) {
-            sobremim.style.display = "flex";
-            inicio.style.display = "none";
-        }
-    }, 1000);
-}
+</bod

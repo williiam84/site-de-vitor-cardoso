@@ -182,28 +182,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const dots = document.querySelectorAll(".carrossel .dot");
 
     function mostrarSlide(n) {
-        slides.forEach(s => s.classList.remove("ativo"));
+        slides.forEach(s => {
+            s.classList.remove("ativo");
+            s.style.opacity = 0;
+            s.style.display = "none";
+        });
         dots.forEach(d => d.classList.remove("ativo"));
 
         i = (n + slides.length) % slides.length;
 
-        slides[i].classList.add("ativo");
+        slides[i].style.display = "block";
+        setTimeout(() => slides[i].style.opacity = 1, 50);
         dots[i].classList.add("ativo");
     }
 
     // autoplay
     setInterval(() => {
         mostrarSlide(i + 1);
-    }, 2500);  // 2,5s por slide
+    }, 2000);  // troca a cada 2s
 
     // clicar nos dots
     dots.forEach((dot, index) => {
         dot.addEventListener("click", () => mostrarSlide(index));
     });
 
-    // mostra primeiro slide ao carregar
+    // mostra o primeiro slide
     mostrarSlide(i);
 });
+
 </script>
 </body>
 </html>
