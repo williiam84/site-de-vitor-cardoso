@@ -41,6 +41,22 @@
       <h3>Vitor Cardoso</h3>
     </div>
     <p>Sou Vitor Cardoso, fotógrafo em Conceição da Barra — ES, apaixonado por transformar momentos simples em memórias eternas...</p>
+    <h2>Imagens</h2>
+    <div class="carrossel">
+    <div class="slides">
+        <img src="imagens/Captura de tela 2025-11-24 163302.png" class="slide ativo">
+        <img src="imagens/Captura de tela 2025-11-24 163159.png" class="slide">
+        <img src="imagens/Captura de tela 2025-11-24 163141.png" class="slide">
+        <img src="imagens/Captura de tela 2025-11-24 163117.png" class="slide">
+    </div>
+
+    <div class="dots">
+        <span class="dot ativo"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div>
   </section>
 
   <section class="especialidades secao" id="especialidades">
@@ -69,7 +85,6 @@
       <p>Ensaios ao ar livre – luz natural, autenticidade e leveza</p>
     </div>
     <button onclick="EntraremContato()">Entrar em contato</button>
-    <a href=""><button>Ver planos</button></a>
   </section>
 
   <section class="contato secao" id="contato">
@@ -81,7 +96,7 @@
       <label>Mensagem</label>
       <textarea id="msg" placeholder="Digite aqui"></textarea>
       <div class="pacote" id="pacote"></div>
-      <button onclick="EnviarMensagem()">Enviar Mensagem</button>
+      <button class="btn-contato" onclick="EnviarMensagem()">Enviar Mensagem</button>
     </form>
   </section>
 </div> <!-- fim #conteudo -->
@@ -161,8 +176,24 @@ function EnviarMensagem() {
     // Abre o WhatsApp em nova aba
     window.open(link, "_blank");
 }
+let index = 0;
+const slides = document.querySelectorAll(".carrossel .slide");
+const total = slides.length;
+
+function mostrarSlide() {
+    slides.forEach((slide, i) => {
+        slide.classList.remove("ativo");
+    });
+    slides[index].classList.add("ativo");
+    index = (index + 1) % total;
+}
+
+// Mostra o primeiro slide imediatamente
+mostrarSlide();
+
+// Troca a cada 2,5 segundos para ficar mais lento
+setInterval(mostrarSlide, 2500);
 
 </script>
-
 </body>
 </html>

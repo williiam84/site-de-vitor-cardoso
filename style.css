@@ -236,6 +236,47 @@ main button:hover {
 .especialidades a + a button {
     margin-top: 10px;     /* ← Espaço entre um botão e outro */
 }
+#especialidades button {
+    width: 200px;
+    height: 40px;
+}
+.btn-contato {
+  display: inline-block;
+  width: 250px;               /* largura fixa, pode ajustar */
+  height: 45px;               /* altura confortável */
+  background-color: #c6b26b;  /* cor dourada clara */
+  color: #1a1a1a;             /* texto escuro */
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  line-height: 45px;          /* centraliza o texto verticalmente */
+  border: none;
+  border-radius: 10px;        /* cantos arredondados */
+  cursor: pointer;
+  transition: all 0.3s ease;  /* animação suave */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* sombra leve */
+}
+
+.btn-contato:hover {
+  background-color: #d6c17a;  /* dourado mais claro no hover */
+  transform: translateY(-2px); /* leve efeito de elevação */
+  box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+}
+
+.btn-contato:active {
+  transform: translateY(0);   /* volta ao normal ao clicar */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+/* Responsivo para telas pequenas */
+@media (max-width: 480px) {
+  .btn-contato {
+    width: 200px;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+  }
+}
 
 /* ============================
    BOTÃO FINAL
@@ -369,6 +410,48 @@ main button:hover {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.carrossel {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 500px; /* define altura fixa ou mínima */
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.carrossel .slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carrossel img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+.carrossel img.ativo {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .carrossel {
+    max-width: 100%;
+  }
+  .carrossel img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 /* Podemos mostrar a primeira seção com JS depois do loading */
